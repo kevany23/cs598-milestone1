@@ -1,0 +1,6 @@
+.DS_Store
+.idea/
+out/
+sootOutput/
+*.jar
+call_graph.iml
