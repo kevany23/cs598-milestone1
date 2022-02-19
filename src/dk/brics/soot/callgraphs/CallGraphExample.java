@@ -17,15 +17,16 @@ public class CallGraphExample
 {
 	public static void main(String[] args) {
 		// Soot classpath
-		String path = System.getProperty("user.dir")+"/out/production/call_graph";
+		String path = System.getProperty("user.dir")+ "/commons-csv-master/target/classes";
 
 		// Setting the classpath programatically
+		System.out.println(path);
 		Options.v().set_prepend_classpath(true);
 		Options.v().set_soot_classpath(path);
 
 		// The second argument is the path to the main class of a project you want to analyze
 		// (in this case, testers/ExampleCode.java)
-		args = new String[]{"-w", "hello.HelloWorld", "-src-prec", "only-class"};
+		args = new String[]{"-w", "-process-dir", path, "-src-prec", "only-class"};
 
 		PackManager.v().getPack("wjtp").add(new Transform("wjtp.myTrans", new SceneTransformer() {
 
@@ -34,17 +35,26 @@ public class CallGraphExample
 				CHATransformer.v().transform();
 
 				// This line generates the call graph of the project you're going to analyze
+				System.out.println("Getting call graph");
 				CallGraph cg = Scene.v().getCallGraph();
 				// Now that you have the call graph, you can start doing whatever type of
 				// analysis needed for your problem. Below, we are going to traverse the
 				// generated call graph and print caller/callee relationships (BFS)
 
 				System.out.println("**********************************");
-				SootMethod src = Scene.v().getMainClass().getMethodByName("main");
+				Iterator<MethodOrMethodContext> iter = cg.sourceMethods();
+				/*while (iter.hasNext()) {
+					System.out.println(iter.next());
+				}*/
+				//SootMethod src = Scene.v().getMainClass().getMethodByName("main");
 				//List<SootMethod> nodes = new ArrayList<>();
 				List<CGNode> nodes = new ArrayList<>();
+				while (iter.hasNext()) {
+					System.out.println(new CGNode(iter.next().method()));
+					nodes.add(new CGNode(iter.next().method()));
+				}
 				Hashtable<String, Integer> usedMethods = new Hashtable();
-				nodes.add(new CGNode(src));
+				//nodes.add(new CGNode(src));
 				//usedMethods.put(src.getSignature(), 1);
 				//System.out.println(nodes.size());
 				int count = 0;
@@ -59,7 +69,7 @@ public class CallGraphExample
 					) {
 						//continue;
 					}
-					usedMethods.put(src.getSignature(), 1);
+					usedMethods.put(parentSignature, 1);
 					Iterator<MethodOrMethodContext> targets = new Targets(cg.edgesOutOf(parent));
 					while (targets.hasNext()) {
 						SootMethod child = (SootMethod) targets.next();
@@ -77,7 +87,7 @@ public class CallGraphExample
 							continue;
 						}
 						System.out.println(parent.getDeclaringClass()+"."+parent.getName()+
-								" calls " + child.getDeclaringClass()+"."+child.getName());
+								" , " + child.getDeclaringClass()+"."+child.getName());
 						System.out.println(cgnode.level);
 						System.out.println();
 						count++;
