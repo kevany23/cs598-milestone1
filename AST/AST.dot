@@ -1,0 +1,191 @@
+digraph G {
+00[label="compilationUnit\n packageorg.apache.commons.csv;importstaticorg.apache.commons.csv.Token.Type.INVALID;finalclassToken{enumType{INVALID,TOKEN,EOF,EORECORD,COMMENT}privatestaticfinalintINITIAL_TOKEN_LENGTH=50;Token.Typetype=INVALID;finalStringBuildercontent=newStringBuilder(INITIAL_TOKEN_LENGTH);booleanisReady;booleanisQuoted;voidreset(){content.setLength(0);type=INVALID;isReady=false;isQuoted=false;}@OverridepublicStringtoString(){returntype.name()+ +content.toString()+;}}<EOF> "]
+11[label="packageDeclaration\n packageorg.apache.commons.csv; "]
+22[label="packageName\n org.apache.commons.csv "]
+33[label="packageName\n org.apache.commons "]
+44[label="packageName\n org.apache "]
+55[label="packageName\n org "]
+16[label="singleStaticImportDeclaration\n importstaticorg.apache.commons.csv.Token.Type.INVALID; "]
+27[label="typeName\n org.apache.commons.csv.Token.Type "]
+38[label="packageOrTypeName\n org.apache.commons.csv.Token "]
+49[label="packageOrTypeName\n org.apache.commons.csv "]
+510[label="packageOrTypeName\n org.apache.commons "]
+611[label="packageOrTypeName\n org.apache "]
+712[label="packageOrTypeName\n org "]
+113[label="normalClassDeclaration\n finalclassToken{enumType{INVALID,TOKEN,EOF,EORECORD,COMMENT}privatestaticfinalintINITIAL_TOKEN_LENGTH=50;Token.Typetype=INVALID;finalStringBuildercontent=newStringBuilder(INITIAL_TOKEN_LENGTH);booleanisReady;booleanisQuoted;voidreset(){content.setLength(0);type=INVALID;isReady=false;isQuoted=false;}@OverridepublicStringtoString(){returntype.name()+ +content.toString()+;}} "]
+214[label="classModifier\n final "]
+215[label="classBody\n {enumType{INVALID,TOKEN,EOF,EORECORD,COMMENT}privatestaticfinalintINITIAL_TOKEN_LENGTH=50;Token.Typetype=INVALID;finalStringBuildercontent=newStringBuilder(INITIAL_TOKEN_LENGTH);booleanisReady;booleanisQuoted;voidreset(){content.setLength(0);type=INVALID;isReady=false;isQuoted=false;}@OverridepublicStringtoString(){returntype.name()+ +content.toString()+;}} "]
+316[label="enumDeclaration\n enumType{INVALID,TOKEN,EOF,EORECORD,COMMENT} "]
+417[label="enumBody\n {INVALID,TOKEN,EOF,EORECORD,COMMENT} "]
+518[label="enumConstantList\n INVALID,TOKEN,EOF,EORECORD,COMMENT "]
+619[label="enumConstant\n INVALID "]
+620[label="enumConstant\n TOKEN "]
+621[label="enumConstant\n EOF "]
+622[label="enumConstant\n EORECORD "]
+623[label="enumConstant\n COMMENT "]
+324[label="fieldDeclaration\n privatestaticfinalintINITIAL_TOKEN_LENGTH=50; "]
+425[label="fieldModifier\n private "]
+426[label="fieldModifier\n static "]
+427[label="fieldModifier\n final "]
+428[label="integralType\n int "]
+429[label="variableDeclarator\n INITIAL_TOKEN_LENGTH=50 "]
+530[label="variableDeclaratorId\n INITIAL_TOKEN_LENGTH "]
+531[label="literal\n 50 "]
+332[label="fieldDeclaration\n Token.Typetype=INVALID; "]
+433[label="unannClassOrInterfaceType\n Token.Type "]
+534[label="unannClassType_lfno_unannClassOrInterfaceType\n Token "]
+535[label="unannClassType_lf_unannClassOrInterfaceType\n .Type "]
+436[label="variableDeclarator\n type=INVALID "]
+537[label="variableDeclaratorId\n type "]
+538[label="expressionName\n INVALID "]
+339[label="fieldDeclaration\n finalStringBuildercontent=newStringBuilder(INITIAL_TOKEN_LENGTH); "]
+440[label="fieldModifier\n final "]
+441[label="unannClassType_lfno_unannClassOrInterfaceType\n StringBuilder "]
+442[label="variableDeclarator\n content=newStringBuilder(INITIAL_TOKEN_LENGTH) "]
+543[label="variableDeclaratorId\n content "]
+544[label="classInstanceCreationExpression_lfno_primary\n newStringBuilder(INITIAL_TOKEN_LENGTH) "]
+645[label="expressionName\n INITIAL_TOKEN_LENGTH "]
+346[label="fieldDeclaration\n booleanisReady; "]
+447[label="unannPrimitiveType\n boolean "]
+448[label="variableDeclaratorId\n isReady "]
+349[label="fieldDeclaration\n booleanisQuoted; "]
+450[label="unannPrimitiveType\n boolean "]
+451[label="variableDeclaratorId\n isQuoted "]
+352[label="methodDeclaration\n voidreset(){content.setLength(0);type=INVALID;isReady=false;isQuoted=false;} "]
+453[label="methodHeader\n voidreset() "]
+554[label="result\n void "]
+555[label="methodDeclarator\n reset() "]
+456[label="block\n {content.setLength(0);type=INVALID;isReady=false;isQuoted=false;} "]
+557[label="blockStatements\n content.setLength(0);type=INVALID;isReady=false;isQuoted=false; "]
+658[label="expressionStatement\n content.setLength(0); "]
+759[label="methodInvocation\n content.setLength(0) "]
+860[label="typeName\n content "]
+861[label="literal\n 0 "]
+662[label="expressionStatement\n type=INVALID; "]
+763[label="assignment\n type=INVALID "]
+864[label="expressionName\n type "]
+865[label="assignmentOperator\n = "]
+866[label="expressionName\n INVALID "]
+667[label="expressionStatement\n isReady=false; "]
+768[label="assignment\n isReady=false "]
+869[label="expressionName\n isReady "]
+870[label="assignmentOperator\n = "]
+871[label="literal\n false "]
+672[label="expressionStatement\n isQuoted=false; "]
+773[label="assignment\n isQuoted=false "]
+874[label="expressionName\n isQuoted "]
+875[label="assignmentOperator\n = "]
+876[label="literal\n false "]
+377[label="methodDeclaration\n @OverridepublicStringtoString(){returntype.name()+ +content.toString()+;} "]
+478[label="markerAnnotation\n @Override "]
+579[label="typeName\n Override "]
+480[label="methodModifier\n public "]
+481[label="methodHeader\n StringtoString() "]
+582[label="unannClassType_lfno_unannClassOrInterfaceType\n String "]
+583[label="methodDeclarator\n toString() "]
+484[label="block\n {returntype.name()+ +content.toString()+;} "]
+585[label="returnStatement\n returntype.name()+ +content.toString()+; "]
+686[label="additiveExpression\n type.name()+ +content.toString()+ "]
+787[label="additiveExpression\n type.name()+ +content.toString() "]
+888[label="additiveExpression\n type.name()+  "]
+989[label="methodInvocation_lfno_primary\n type.name() "]
+1090[label="typeName\n type "]
+991[label="literal\n   "]
+892[label="methodInvocation_lfno_primary\n content.toString() "]
+993[label="typeName\n content "]
+794[label="literal\n  "]
+00->11
+11->22
+22->33
+33->44
+44->55
+00->16
+16->27
+27->38
+38->49
+49->510
+510->611
+611->712
+00->113
+113->214
+113->215
+215->316
+316->417
+417->518
+518->619
+518->620
+518->621
+518->622
+518->623
+215->324
+324->425
+324->426
+324->427
+324->428
+324->429
+429->530
+429->531
+215->332
+332->433
+433->534
+433->535
+332->436
+436->537
+436->538
+215->339
+339->440
+339->441
+339->442
+442->543
+442->544
+544->645
+215->346
+346->447
+346->448
+215->349
+349->450
+349->451
+215->352
+352->453
+453->554
+453->555
+352->456
+456->557
+557->658
+658->759
+759->860
+759->861
+557->662
+662->763
+763->864
+763->865
+763->866
+557->667
+667->768
+768->869
+768->870
+768->871
+557->672
+672->773
+773->874
+773->875
+773->876
+215->377
+377->478
+478->579
+377->480
+377->481
+481->582
+481->583
+377->484
+484->585
+585->686
+686->787
+787->888
+888->989
+989->1090
+888->991
+787->892
+892->993
+686->794
+}

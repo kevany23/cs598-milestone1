@@ -1,5 +1,7 @@
 The code is to be used as follows:
 
+Download Java and graphviz.
+
 Download the script and jar file. In a command line, the script can be run with the following command:
 
 python static_analysis.py --representation [AST/CG/CFG] --input [file path]
