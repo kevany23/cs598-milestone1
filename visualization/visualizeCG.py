@@ -1,10 +1,15 @@
 import graphviz
 import os
-os.environ["PATH"] += os.pathsep + 'D:\Documents\cs598\IntelliJ\call_graph_CS598\visualization'
+import sys
 
-#pipenv run python visualize.py
+# python visualize.py [optional filename]
+# or
+# pipenv run python visualize.py [optional filename]
+# By default, the program will read graph.txt
 
-file = open('graph.txt')
+inputFile = sys.argv[1] if len(sys.argv) >= 2 else 'graph.txt'
+
+file = open(inputFile)
 text = file.read()
 lines = text.split('\n')
 
@@ -22,9 +27,6 @@ for line in lines:
     vertices.add(dest)
     edges.add((source, dest))
 
-print(vertices)
-print(edges)
-
 graph = graphviz.Graph()
 
 for v in vertices:
@@ -33,7 +35,5 @@ for v in vertices:
 for edge in edges:
     graph.edge(edge[0], edge[1])
 
-print(graph)
-
 #doctest_mark_exe()
-graph.render('doctest-output/round-table.gv').replace('\\', '/')
+graph.render('cg-representation.gv').replace('\\', '/')

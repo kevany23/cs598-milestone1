@@ -1,18 +1,22 @@
 import graphviz
 import os
-os.environ["PATH"] += os.pathsep + 'D:\Documents\cs598\IntelliJ\call_graph_CS598\visualization'
+import sys
 
-#pipenv run python visualize.py
+# python visualize.py [optional filename1] [optional filename2]
+# or
+# pipenv run python visualize.py [optional filename1] [optional filename2]
+# By default, the program will read graph2.txt and graph3.txt
 
-file = open('graph2.txt')
+inputFile1 = sys.argv[1] if len(sys.argv) >= 2 else 'graph2.txt'
+inputFile2 = sys.argv[2] if len(sys.argv) >= 3 else 'graph3.txt'
+
+file = open(inputFile1)
 text = file.read()
 lines = text.split('\n')
 
 vertices = set()
 edges = set()
-cgVertices = set()
-cgEdges = {}
-methodCfg = {}
+methodNames = set()
 count = 0
 cfgId = {}
 
@@ -22,15 +26,10 @@ for line in lines:
     array = line.split(' , ')
     source = array[0]
     dest = array[1]
-    cgVertices.add(source)
-    cgVertices.add(dest)
     vertices.add(source)
     vertices.add(dest)
-    cgEdges.setdefault(source, set())
-    methodCfg.setdefault(source, set())
-    cgEdges[source].add(dest)
 
-file = open('graph3.txt')
+file = open(inputFile2)
 text = file.read()
 lines = text.split('\n')
 
@@ -46,6 +45,7 @@ for line in lines:
         count += 1
         dest = cfgId[dest]
         vertices.add(methodName)
+        methodNames.add(methodName)
         vertices.add(dest)
         edges.add((methodName, dest))
     if len(array) == 3:
@@ -56,6 +56,7 @@ for line in lines:
         count += 1
         source = cfgId[source]
         dest = array[2]
+        destText = dest
         dest = methodName + ' | ' + dest
         cfgId.setdefault(dest, str(count))
         count += 1
@@ -63,14 +64,10 @@ for line in lines:
         vertices.add(methodName)
         vertices.add(source)
         vertices.add(dest)
-        if methodName in methodCfg:
-            methodCfg[methodName].add((source, dest))
-        else:
-            methodCfg[methodName] = set([(source, dest)])
-        for nextMethodName in cgVertices:
-            if nextMethodName in dest:
+        for nextMethodName in methodNames:
+            if nextMethodName in destText:
                 vertices.add(nextMethodName)
-                edges.add(source, nextMethodName)
+                edges.add((source, nextMethodName))
                 continue
         edges.add((source, dest))
 
@@ -84,4 +81,11 @@ for v in vertices:
 for (u, v) in edges:
     graph.edge(u, v)
 
-graph.render('cfg-output/round-table.gv').replace('\\', '/')
+# Write cfg statement -> number mapping to file
+file = open('cfg-mapping.txt', 'w')
+file.write('CFG statement, key number\n')
+for key in cfgId:
+    file.write(cfgId[key] + ', ' + key + '\n')
+file.close()
+
+graph.render('cfg-output.gv').replace('\\', '/')
