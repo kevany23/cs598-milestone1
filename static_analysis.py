@@ -10,6 +10,7 @@ args = parser.parse_args()
 rep = args.representation
 path = args.input
 file = rep + ".jar"
+file_out = rep + ".png"
 
 subprocess.run(['java', '-jar', file], input=path, encoding='ascii')
-subprocess.call(['dot', '-Tpng', 'AST.dot', '-o', 'AST.png'])
+subprocess.call(['dot', '-Tpng', 'AST.dot', '-o', file_out])
