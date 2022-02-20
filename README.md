@@ -4,7 +4,7 @@ Download the script and jar file. In a command line, the script can be run with 
 
 python static_analysis.py --representation [AST/CG/CFG] --input [file path]
 
-to generate the respective representation for the file given. Note that your file path should be relative to where the script is located - not the absolute path. Also note that path name should use '/' instead of '\'. 
+to generate the respective representation for the file given. Note that your file path should be relative to where the script is located - not the absolute path. Also note that path name should use '/' instead of '\\'. 
 
 Here's an example of the script and it's output:
 
