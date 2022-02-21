@@ -45,6 +45,7 @@ if rep == "CG" or rep == "cg":
         graph.edge(edge[0], edge[1])
 
     graph.render('cg-representation.gv').replace('\\', '/')
+
 if rep == "CFG" or rep == "cfg":
     inputFile1 = 'graph2.txt'
     inputFile2 = 'graph3.txt'
@@ -67,6 +68,8 @@ if rep == "CFG" or rep == "cfg":
         dest = array[1]
         vertices.add(source)
         vertices.add(dest)
+        methodNames.add(source)
+        methodNames.add(dest)
 
     file = open(inputFile2)
     text = file.read()
@@ -103,12 +106,15 @@ if rep == "CFG" or rep == "cfg":
             vertices.add(methodName)
             vertices.add(source)
             vertices.add(dest)
+            toMethod = False
             for nextMethodName in methodNames:
                 if nextMethodName in destText:
                     vertices.add(nextMethodName)
                     edges.add((source, nextMethodName))
-                    continue
-            edges.add((source, dest))
+                    toMethod = True
+                    break
+            if not toMethod:
+                edges.add((source, dest))
 
     graph = graphviz.Graph()
 
