@@ -57,19 +57,11 @@ public class CFGBuilder
 
 				System.out.println("**********************************");
 				Iterator<MethodOrMethodContext> iter = cg.sourceMethods();
-				/*while (iter.hasNext()) {
-					System.out.println(iter.next());
-				}*/
-				//SootMethod src = Scene.v().getMainClass().getMethodByName("main");
-				//List<SootMethod> nodes = new ArrayList<>();
 				List<CGNode> nodes = new ArrayList<>();
 				while (iter.hasNext()) {
 					nodes.add(new CGNode(iter.next().method()));
 				}
 				Hashtable<String, Integer> usedMethods = new Hashtable();
-				//nodes.add(new CGNode(src));
-				//usedMethods.put(src.getSignature(), 1);
-				//System.out.println(nodes.size());
 				int count = 0;
 				while(!nodes.isEmpty()){
 					CGNode cgnode = nodes.get(0);
@@ -78,10 +70,11 @@ public class CFGBuilder
 					String parentClassname = parent.getDeclaringClass().toString();
 					String parentSignature = parent.getSignature();
 					if (
-							parentSignature.contains("init") ||
-									usedMethods.containsKey(parentSignature)
+							usedMethods.contains(parentSignature)
+							|| isMethodFiltered(parentSignature, parentClassname)
 					) {
-						//continue;
+						nodes.remove(0);
+						continue;
 					}
 					usedMethods.put(parentSignature, 1);
 
@@ -90,11 +83,14 @@ public class CFGBuilder
 					Iterator<Unit> cfgNodes = unitGraph.iterator();
 					while (cfgNodes.hasNext()) {
 						Unit cfgNode = cfgNodes.next();
-						ArrayList<String> succList = new ArrayList<String>();
 						List<Unit> succs = unitGraph.getSuccsOf(cfgNode);
 						Iterator<Unit> succIter = succs.iterator();
 						while (succIter.hasNext()) {
-							succList.add(succIter.next().toString());
+							Unit nextUnit = succIter.next();
+							String entry = parentSignature + " , " + cfgNode.toString() + " , " +
+									nextUnit.toString();
+							stream2.println(entry);
+							System.out.println(entry);
 						}
 					}
 
@@ -118,32 +114,29 @@ public class CFGBuilder
 							while (entryIter.hasNext()) {
 								Unit entryPoint = entryIter.next();
 								stream2.println(signature + " , " + entryPoint.toString());
+								System.out.println(signature + " , " + entryPoint.toString());
 							}
 							Iterator<Unit> childCfgNodes = childUnitGraph.iterator();
 							while (childCfgNodes.hasNext()) {
 								Unit ccfgNode = childCfgNodes.next();
-								ArrayList<String> succList = new ArrayList<String>();
 								List<Unit> succs = unitGraph.getSuccsOf(ccfgNode);
 								Iterator<Unit> succIter = succs.iterator();
 								while (succIter.hasNext()) {
 									Unit nextUnit = succIter.next();
-									succList.add(nextUnit.toString());
-									stream2.println(signature + " , " +
-											ccfgNode.toString() + " , " +
-											nextUnit.toString());
+									String entry = signature + " , " + ccfgNode.toString() + " , " +
+											nextUnit.toString();
+									stream2.println(entry);
+									System.out.println(entry);
 								}
-
 
 							}
 						} else {
 							continue;
 						}
-						/*System.out.println(parent.getDeclaringClass()+"."+parent.getName()+
-								" , " + child.getDeclaringClass()+"."+child.getName());*/
 						stream.println(parentSignature +
 								" , " + signature);
-						//System.out.println(cgnode.level);
-						//System.out.println();
+						System.out.println(parentSignature +
+								" , " + signature);
 						count++;
 					}
 					nodes.remove(0);

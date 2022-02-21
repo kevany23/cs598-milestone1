@@ -28,6 +28,8 @@ for line in lines:
     dest = array[1]
     vertices.add(source)
     vertices.add(dest)
+    methodNames.add(source)
+    methodNames.add(dest)
 
 file = open(inputFile2)
 text = file.read()
@@ -64,12 +66,15 @@ for line in lines:
         vertices.add(methodName)
         vertices.add(source)
         vertices.add(dest)
+        toMethod = False
         for nextMethodName in methodNames:
             if nextMethodName in destText:
                 vertices.add(nextMethodName)
                 edges.add((source, nextMethodName))
-                continue
-        edges.add((source, dest))
+                toMethod = True
+                break
+        if not toMethod:
+            edges.add((source, dest))
 
 graph = graphviz.Graph()
 

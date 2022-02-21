@@ -53,19 +53,12 @@ public class CallGraphExample
 
 				System.out.println("**********************************");
 				Iterator<MethodOrMethodContext> iter = cg.sourceMethods();
-				/*while (iter.hasNext()) {
-					System.out.println(iter.next());
-				}*/
-				//SootMethod src = Scene.v().getMainClass().getMethodByName("main");
-				//List<SootMethod> nodes = new ArrayList<>();
+
 				List<CGNode> nodes = new ArrayList<>();
 				while (iter.hasNext()) {
 					nodes.add(new CGNode(iter.next().method()));
 				}
 				Hashtable<String, Integer> usedMethods = new Hashtable();
-				//nodes.add(new CGNode(src));
-				//usedMethods.put(src.getSignature(), 1);
-				//System.out.println(nodes.size());
 				int count = 0;
 				while(!nodes.isEmpty()){
 					CGNode cgnode = nodes.get(0);
@@ -73,10 +66,11 @@ public class CallGraphExample
 					String parentClassname = parent.getDeclaringClass().toString();
 					String parentSignature = parent.getSignature();
 					if (
-							parentSignature.contains("init") ||
-									usedMethods.containsKey(parentSignature)
+							usedMethods.contains(parentSignature)
+							|| isMethodFiltered(parentSignature, parentClassname)
 					) {
-						//continue;
+						nodes.remove(0);
+						continue;
 					}
 					usedMethods.put(parentSignature, 1);
 					Iterator<MethodOrMethodContext> targets = new Targets(cg.edgesOutOf(parent));
@@ -99,8 +93,6 @@ public class CallGraphExample
 								" , " + child.getDeclaringClass()+"."+child.getName());
 						stream.println(parent.getDeclaringClass()+"."+parent.getName()+
 								" , " + child.getDeclaringClass()+"."+child.getName());
-						System.out.println(cgnode.level);
-						System.out.println();
 						count++;
 					}
 					nodes.remove(0);
@@ -112,5 +104,17 @@ public class CallGraphExample
 		}));
 
 		Main.main(args);
+	}
+
+	public static boolean isMethodFiltered(String signature, String className) {
+		if (
+				signature.contains("init")
+						|| className.startsWith("java")
+						|| className.startsWith("sun.")
+						|| className.startsWith("jdk")
+		) {
+			return true;
+		}
+		return false;
 	}
 }
