@@ -5,7 +5,7 @@
 
 To run the code, the user needs Java downloaded and also graphviz installed on their machine for both Java and Python.
 
-Download the script and jar file. In a command line, the script can be run with the following command:
+Download the script and jar files. In a command line, the script can be run with the following command:
 
 python static_analysis.py --representation [AST/CG/CFG] --input [file path]
 
