@@ -1,4 +1,4 @@
-The static_analysis.py script is to be used as follows:
+### The static_analysis.py script is to be used as follows:
 
 To run the code, the user needs Java downloaded and also graphviz installed on their machine for both Java and Python.
 
