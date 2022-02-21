@@ -11,6 +11,8 @@ python static_analysis.py --representation [AST/CG/CFG] --input [file path]
 
 to generate the respective representation for the file given. Note that your file path should be relative to where the script is located - not the absolute path. Also note that path name should use '/' instead of '\\'. 
 
+Now we will show some examples of generating the AST/CG/CFG. The source code we tested our graph visualizations on was the Apache commons-csv project which can be found here: https://github.com/apache/commons-csv
+
 Here's an example of the script and it's output:
 
 python3 static_analysis.py --representation AST --input "commons-csv/src/main/java/org/apache/commons/csv/Token.java"
