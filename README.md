@@ -12,11 +12,13 @@ to run the code in an automated manner.
 ### AST
 ![AST](https://user-images.githubusercontent.com/50717720/154831968-ddc88e27-21c8-496d-a843-8f653c48dedb.png)
 ### CG
-[File Here](visualization/cg-representation.gv.pdf)
+[File Here](visualization/cg-representation.gv.pdf)<br>
+![Sample Image](visualization/CGPreview.PNG)
 ### CFG
-[File Here](visualization/cfg-output.gv.pdf)<br>
+[PDF File Here](visualization/cfg-output.gv.pdf)<br>
 Please note: due to the long names of the CFG nodes and branches, we have another file for the mappings of numbers to nodes:<br>
-[File Here](visualization/cfg-mapping.txt)
+[Mapping File Here](visualization/cfg-mapping.txt)<br>
+![Sample Image](visualization/CFGPreview.PNG)
 
 
 # Generating AST/CG/CFG
@@ -58,3 +60,5 @@ The program will generate `cg-representation-gv.pdf`.
 Without file arguments passed in, it defaults to `graph2.txt` and `graph3.txt`.<br>
 The program will generate `cfg-output-gv.pdf`.
 It  will also generate `cfg-mapping.txt` to show the key, node mappings in the graph.
+
+You can checkout many of the representations and scripts for them in the `visualization` directory.
