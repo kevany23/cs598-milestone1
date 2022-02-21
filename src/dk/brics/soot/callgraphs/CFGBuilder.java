@@ -64,7 +64,6 @@ public class CFGBuilder
 				//List<SootMethod> nodes = new ArrayList<>();
 				List<CGNode> nodes = new ArrayList<>();
 				while (iter.hasNext()) {
-					System.out.println(new CGNode(iter.next().method()));
 					nodes.add(new CGNode(iter.next().method()));
 				}
 				Hashtable<String, Integer> usedMethods = new Hashtable();
