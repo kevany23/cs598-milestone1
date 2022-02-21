@@ -19,15 +19,19 @@ Please note: due to the long names of the CFG nodes and branches, we have anothe
 [File Here](visualization/cfg-mapping.txt)
 
 
+# Generating AST/CG/CFG
 ## The static_analysis.py script is to be used as follows:
+
 
 To run the code, the user needs Java downloaded and also graphviz installed on their machine for both Java and Python.
 
-Download the script and jar file. In a command line, the script can be run with the following command:
+Download the script and jar files. In a command line, the script can be run with the following command:
 
 python static_analysis.py --representation [AST/CG/CFG] --input [file path]
 
 to generate the respective representation for the file given. Note that your file path should be relative to where the script is located - not the absolute path. Also note that path name should use '/' instead of '\\'. 
+
+Now we will show some examples of generating the AST/CG/CFG. The source code we tested our graph visualizations on was the Apache commons-csv project which can be found here: https://github.com/apache/commons-csv
 
 Here's an example of the script and it's output:
 
