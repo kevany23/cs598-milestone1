@@ -1,6 +1,6 @@
-The code is to be used as follows:
+The static_analysis.py script is to be used as follows:
 
-Download Java and graphviz.
+To run the code, the user needs Java downloaded and also graphviz installed on their machine for both Java and Python.
 
 Download the script and jar file. In a command line, the script can be run with the following command:
 
