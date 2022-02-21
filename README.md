@@ -1,11 +1,11 @@
-# Milestone 1 Submission
+# Milestone 1 Submission by Team 8
 * Kevan Yang
 * Alex Huynh
 * Tommy Ge
 
 ## Overview
 We have created AST, CG, and CFG representations and visualizations for the `commons-csv` open source Java repo.
-Our deliverables include, the representations we've generated, and the code to create these reperentations, and a script
+Our deliverables include the representations we've generated, the code to create these reperentations, and a script
 to run the code in an automated manner.
 
 ## Representations
@@ -46,11 +46,12 @@ Note that the script produces both the .dot file and a .png file for easier view
 You can run the Java files on IntelliJ.
 The `CallGraphExample.java` file generates the CG representation while the `CFGBuilder.java` file generates the CFG representation.
 `CallGraphExample.java` will generate the cg representation in `graph.txt`.
-`CFGBuilder.java` will generate the cfg representation in `graph1.txt` and `graph2.txt`
+`CFGBuilder.java` will generate the cfg representation in `graph1.txt` and `graph2.txt`<br>
+You can change the String for the classPath and other settings in those java files.
 <br>
 
-Move the files visualization directory. You must have `Graphviz` the program on your machine and its library installed on Python.
-In the visualization directory run:<br>
+Move the files to the  `visualization` directory. You must have `Graphviz` the program on your machine and its library installed on Python.
+In the `visualization` directory run:<br>
 ### For CG representation:
 `python visualizeCG.py optionalFile`<br>
 Without a text representation file name passed in, it defaults to `graph.txt`.<br>
@@ -59,6 +60,8 @@ The program will generate `cg-representation-gv.pdf`.
 `python visualizeCFG.py optionalFile1 optionalFile2`<br>
 Without file arguments passed in, it defaults to `graph2.txt` and `graph3.txt`.<br>
 The program will generate `cfg-output-gv.pdf`.
-It  will also generate `cfg-mapping.txt` to show the key, node mappings in the graph.
+It  will also generate `cfg-mapping.txt` to show the key, node mappings in the graph.<br>
+
+Note that if you're passing in your own files or files with different names, the format must match what is outputted from the java program.<br>
 
 You can checkout many of the representations and scripts for them in the `visualization` directory.
